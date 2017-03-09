@@ -67,8 +67,10 @@ class WordPress_Sniffs_XSS_EscapeOutputSniff extends WordPress_Sniff {
 	 * @var array
 	 */
 	public static $unsafePrintingFunctions = array(
-		'_e'  => 'esc_html_e() or esc_attr_e()',
-		'_ex' => 'esc_html_ex() or esc_attr_ex()',
+		'_e'   => 'esc_html_e() or esc_attr_e()',
+		'_ex'  => 'esc_html_ex() or esc_attr_ex()',
+		'\_e'  => '\esc_html_e() or \esc_attr_e()',
+		'\_ex' => '\esc_html_ex() or \esc_attr_ex()',
 	);
 
 	/**
@@ -84,13 +86,14 @@ class WordPress_Sniffs_XSS_EscapeOutputSniff extends WordPress_Sniff {
 	 * @var array
 	 */
 	private $magic_constant_tokens = array(
-		'T_CLASS_C'  => true, // __CLASS__
-		'T_FILE'     => true, // __FILE__
-		'T_FUNC_C'   => true, // __FUNCTION__
-		'T_LINE'     => true, // __LINE__
-		'T_METHOD_C' => true, // __METHOD__
-		'T_NS_C'     => true, // __NAMESPACE__
-		'T_TRAIT_C'  => true, // __TRAIT__
+		'T_CLASS_C'      => true, // __CLASS__
+		'T_FILE'         => true, // __FILE__
+		'T_FUNC_C'       => true, // __FUNCTION__
+		'T_LINE'         => true, // __LINE__
+		'T_METHOD_C'     => true, // __METHOD__
+		'T_NS_C'         => true, // __NAMESPACE__
+		'T_TRAIT_C'      => true, // __TRAIT__
+		'T_NS_SEPARATOR' => true, // \
 	);
 
 	/**
